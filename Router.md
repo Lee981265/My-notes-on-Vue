@@ -4,27 +4,43 @@
 父组件中：
 
 ```js
-  <li v-for="article in articles" @click="getDescribe(article.id)">
+<li v-for="article in articles" @click="getDescribe(article.id)">
 ```
 methods：
 
 ## case1
+
 ```js
-      getDescribe(id) {
-      //直接调用$router.push 实现携带参数的跳转
-        this.$router.push({
-          path: `/describe/${id}`,
-        })
+getDescribe(id) {
+//直接调用$router.push 实现携带参数的跳转
+  this.$router.push({
+    path: `/describe/${id}`,
+  })
 ```
-case需要对应路由配置如下：
+case1需要对应路由配置如下：
+
 ```js
-    {
-     path: '/describe/:id',
-     name: 'Describe',
-     component: Describe
-   }
+{
+ path: '/describe/:id',
+ name: 'Describe',
+ component: Describe
+}
 ```
+
 很显然，需要在path中添加/:id来对应 $router.push 中path携带的参数。在子组件中可以使用来获取传递的参数值。
 ```js
 $route.params.id
 ```
+
+## case2
+
+父组件中：通过路由属性中的name来确定匹配的路由，通过params来传递参数。
+
+```js
+ this.$router.push({
+    name: 'Describe',
+    params: {
+      id: id
+    }
+  })
+ ```
