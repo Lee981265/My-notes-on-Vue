@@ -43,4 +43,47 @@ $route.params.id
       id: id
     }
   })
- ```
+```
+ 对应路由配置: 注意这里不能使用:/id来传递参数了，因为父组件中，已经使用params来携带参数了。
+ 
+```js
+ {
+     path: '/describe',
+     name: 'Describe',
+     component: Describe
+ }
+```
+子组件中: 这样来获取参数
+
+```js
+$route.params.id
+```
+
+## case3
+
+父组件：使用path来匹配路由，然后通过query来传递参数
+这种情况下 query传递的参数会显示在url后面?id=？
+
+```js
+this.$router.push({
+      path: '/describe',
+      query: {
+        id: id
+      }
+    })
+```
+对应路由配置：
+
+```js
+{
+     path: '/describe',
+     name: 'Describe',
+     component: Describe
+}
+```
+对应子组件: 这样来获取参数
+
+```js
+$route.query.id
+```
+
