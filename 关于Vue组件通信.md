@@ -55,7 +55,7 @@
  
  
  // 子组件向父组件传递数据
- this.$emit('reloadData',data);   // 父组件的 reloadData 函数返回 data
+ this.$emit('onreloadData',data);   // 父组件的 reloadData 函数返回 data
  ```
  
  
